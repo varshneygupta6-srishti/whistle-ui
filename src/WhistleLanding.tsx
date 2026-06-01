@@ -7,9 +7,9 @@ const results = [
   { concern: "Protruding Teeth", duration: "8 months" },
 ];
 
-const styles = {
-  "*": { margin: 0, padding: 0, boxSizing: "border-box" },
-};
+// const styles = {
+//   "*": { margin: 0, padding: 0, boxSizing: "border-box" },
+// };
 
 const faqItems = [
   { q: "What are Aligners?", a: "Aligners are clear, removable dental devices used to straighten teeth. Unlike traditional braces, they are virtually invisible and can be taken out while eating or brushing." },
@@ -20,7 +20,8 @@ const faqItems = [
 ];
 
 function GotQuestions() {
-  const [open, setOpen] = useState(null);
+  // const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState<number | null>(null);
   return (
     <div style={{ background: "#fff", padding: "36px 16px 40px" }}>
       <h2 style={{ textAlign: "center", fontSize: 21, fontWeight: 900, color: "#111", marginBottom: 28 }}>
@@ -96,9 +97,12 @@ function CrossIcon() {
 }
 
 function WhistleComparison() {
-  const [openRows, setOpenRows] = useState({});
-  const toggle = (i) => setOpenRows(prev => ({ ...prev, [i]: !prev[i] }));
-
+  const [openRows, setOpenRows] = useState<Record<number, boolean>>({});
+  const toggle = (i: number) => setOpenRows((prev: Record<number, boolean>) => ({
+  ...prev,
+  [i]: !prev[i],
+  }));
+  
   return (
     <div style={{ background: "#fff", padding: "36px 16px 40px" }}>
       <h2 style={{ textAlign: "center", fontSize: 22, fontWeight: 900, color: "#111", marginBottom: 28 }}>
